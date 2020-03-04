@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BBDTVM - Sobre</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.dtvm.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business-dtvm.css" rel="stylesheet">
+    <link href="css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+  </head>
+  
+  <body >
+
+    <!-- Navigation -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/logo/LOGO_VERT_PRETO.png" width="150" ></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="sobre.html">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-empresa">Empresa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-negocio">Negócios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-pessoa">Pessoas</a>
+            </li>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="sistemas.html">Demanda</a>
+                <a class="dropdown-item" href="sistemas.html">RTI</a>
+                <a class="dropdown-item" href="sistemas.html">Reserva Sala</a>
+                <a class="dropdown-item" href="internas/manutencao.html" >Manutenção Intranet</a>
+                <a class="dropdown-item" href="sistemas.html">Ver Todos</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="index.html">Intranet BB</a>
+                <a class="dropdown-item" href="index3.html">Plataforma</a>
+                <a class="dropdown-item" href="index2.html">Ouvidoria</a>
+                <a class="dropdown-item" href="index.html">Unibb</a>
+                <a class="dropdown-item" href="index3.html">Conections</a>
+                <a class="dropdown-item" href="index2.html">Cipa</a>
+                <a class="dropdown-item" href="index.html">Ecoa</a>
+                <a class="dropdown-item" href="index3.html">Downloads Úteis</a>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="funcionarios.html"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="funcionarios.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Perfil</a>
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-envelope-o" aria-hidden="true"></i> Correio</a>
+                <a class="dropdown-item" href="faq.html"><i class="fa fa-check" aria-hidden="true"></i> Ciência de Termos</a>
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-stethoscope" aria-hidden="true"></i> Periódico</a>
+                <a class="dropdown-item" href="sidebar.html"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Shiatsu</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Sobre
+        <small>a BBDTVM</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Sobre</li>
+      </ol>
+
+      <!-- Intro -->
+	  	<% Dim rsSobre, vet(2)
+		
+		vet(0) = "BBDTVM"
+		vet(1) = "Select top 1 * from intranet.sobre where ativo = 1 and tipo=1 order by ordem"
+		
+		abreconexaomssql(vet)
+		rsSobre = cnxs
+		fechaconexaomssql
+		
+		if not rsSobre.eof then
+		%>
+      <div class="row">
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="IMG/sobre/pexels-photo-3183197.jpeg" <%=rsSobre.field("img")%> width="750" height="450" alt="">
+        </div>
+        <div class="col-lg-6">
+		  <%=rsSobre.field("txt")%>
+          <p>A BB Gestão de Recursos - Distribuidora de Títulos e Valores Mobiliários S.A. é uma empresa especialista na gestão de recursos de terceiros e na administração dos fundos de investimento dos clientes do Banco do Brasil, distribuídos na maior rede de atendimento bancário do país. A empresa iniciou suas atividades em 1986 e ao longo desses anos passou por mudanças para aperfeiçoar sua estrutura. A BB DTVM é líder da indústria nacional de fundos de investimento e carteiras administradas, com patrimônio superior a R$ 750 bilhões, conforme ranking da ANBIMA.</p>
+         <p>Aliando solidez, transparência, segurança, experiência e tecnologia avançada, a BB DTVM é sinônimo de excelência em soluções de gestão aos mais diversos segmentos do mercado: Varejo, Alta Renda, Private, Corporate, Estrangeiros, Governo e Investidores Institucionais.</p>
+         <p>Com sede no Rio de Janeiro e escritório em São Paulo, a Gestora atua na distribuição de títulos e valores mobiliários, administração de carteiras, além de instituir, organizar, administrar e gerir fundos e clubes de investimento. Na execução de suas atividades, todas as áreas da BB DTVM seguem princípios éticos e legais em conformidade com a legislação vigente e com o Código de Ética do conglomerado Banco do Brasil.</p>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <!-- More -->
+	  
+	  
+		#
+		<% Dim rsMais
+		
+		vet(0) = "BBDTVM"
+		vet(1) = "Select * from intranet.sobre where ativo = 1 and tipo=2 order by ordem"
+		
+		abreconexaomssql(vet)
+		rsMais = cnxs
+		fechaconexaomssql
+		
+		if not rsMais.eof then
+		%>
+      <div class="row">
+	  
+		<% 	while rsMais.hasnext do %>		
+        <div class="col-lg-4 mb-4">		
+            <%if tipo=3%><a href="<%=rsMais.field("link")%>"><%end if%>
+          <div class="card h-100 text-center">
+            <img class="card-img-top"  height="200px" src="<%=rsMais.field("img")%>" alt="<%=rsMais.field("titulo")%>" title="<%=rsMais.field("titulo")%>">
+            <div class="card-body">
+              <h4 class="card-title"><%=rsMais.field("titulo")%>"</h4>
+              <h6 class="card-subtitle mb-2 text-muted">#</h6>
+              <p class="card-text"><%=rsMais.field("txt")%></p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+		  <%if tipo=3%></a><%end if%>
+        </div>		
+		<% 	rsMais.movenext
+			loop %>
+
+
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+			<!--div style="background-image:url('IMG/sobre/pz_az.jpg');height:200px;font-size:30pt;color:#fff;padding:50px;text-align:right">Missão</div-->
+            <img class="card-img-top" src="IMG/sobre/pz_az.jpg" alt="Missão" title="Missão" height="200px">
+            <div class="card-body">
+              <h4 class="card-title">Missão</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+			<div style="background-image:url('IMG/sobre/pz_am.jpeg');height:200px;font-size:30pt;color:#fff;padding:50px;text-align:right"">Visão</div>
+            <!--img class="card-img-top" src="IMG/sobre/visao2.png" alt="Visão" title="Visão"-->
+            <div class="card-body">
+              <h4 class="card-title">Visão</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100 text-center">
+			<div style="background-image:url('IMG/sobre/pz_ci.jpg');height:200px;font-size:30pt;color:#fff;padding:50px;text-align:right">Valores</div>
+            <!--img class="card-img-top" src="IMG/sobre/valores2.png" alt="Valores" title="Valores"-->
+            <div class="card-body">
+              <h4 class="card-title">Valores</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+        </div>
+          
+        <div class="col-lg-4 mb-4">
+            <a href="internas/monta_pagina.html?id=sobre-adm">
+          <div class="card h-100 text-center">
+            <img class="card-img-top" src="IMG/sobre/admin.png" alt="Administradores">
+            <div class="card-body">
+              <h4 class="card-title">Administradores</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <a href="internas/monta_pagina.html?id=sobre-org" >
+          <div class="card h-100 text-center">
+            <img class="card-img-top" src="IMG/sobre/organograma.png" alt="Organograma">
+            <div class="card-body">
+              <h4 class="card-title">Organograma</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+            </div>
+            </div>
+            </a>
+        </div>
+          <div class="col-lg-4 mb-4">
+              <a href="internas/monta_pagina.html?id=sobre-etica">
+          <div class="card h-100 text-center">
+			<!--div style="background-image:url('IMG/sobre/pz_.jpg');height:200px;font-size:30pt;color:#fff;padding:50px;text-align:right">Valores</div-->
+            <img class="card-img-top" src="IMG/sobre/etica.png" alt="Ética">
+            <div class="card-body">
+              <h4 class="card-title">Diretrizes de conduta e ética</h4>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text"></p>
+            </div>
+            <div class="card-footer">
+            </div>
+          </div>
+              </a>
+        </div>
+      </div>
+	  <% end if %>
+      <!-- /.row -->
+
+      <p>&nbsp;</p>
+        
+     <!-- Badges -->
+		#
+		<% Dim rsSelos
+		
+		vet(0) = "BBDTVM"
+		vet(1) = "Select * from intranet.sobre where ativo = 1 and tipo=3 order by ordem"
+		
+		abreconexaomssql(vet)
+		rsSelos = cnxs
+		fechaconexaomssql
+		
+		if not rsSelos.eof then
+		%>
+      <div class="row">
+	  
+		<% 	while rsSelos.hasnext do %>
+		
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="<%=rsSelos.field("img")%>" alt="<%=rsSelos.field("titulo")%>">
+        </div>
+		<% 	rsSelos.movenext
+			loop %>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="http://www.bb.com.br/portalbb/img.ImgWriter?codigo=44596" alt="Selo - Código AMEC de Princípios e Deveres dos Investidores Institucionais">
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="http://www.bb.com.br/portalbb/img.ImgWriter?codigo=44597" alt="Selo - Princípios para o Investimento Responsável (PRI)">
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <!--img class="img-fluid" src="https://cloudlims.com/images/certification/iso-image.png" alt="Selo - Certificação Internacional ISO 9001:2008 – Qualidade Total"-->
+		  <img class="img-fluid" src="http://expressoaracruz.com/fotos/noticias54.jpg" alt="Selo - Certificação Internacional ISO 9001:2008 – Qualidade Total">
+		  
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="http://www.bb.com.br/portalbb/img.ImgWriter?codigo=45084&origem=cci" alt="Selo - Excelente – Fitch Ratings">
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="" alt="Selo - MQ1 - Moody's - Excelência em qualidade de gestão">
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <img class="img-fluid" src="https://www.bb.com.br/portalbb/img.ImgWriter?codigo=20934&origem=cci" alt="Selo - Empresa Aderiu ao código ANBIMA de Regulação e melhores práticas para os Fundos de Investimento">
+        </div>
+      </div>
+	  <% end if %>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-1 bg-light">
+      <div class="container">
+        <p class="m-0 text-center text-black">Copyright &copy; Divisão de Tecnologia 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+	
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

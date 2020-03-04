@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BBDTVM - Sistemas</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.dtvm.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business-dtvm.css" rel="stylesheet">
+    <link href="css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/logo/LOGO_VERT_PRETO.png" width="150" ></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="sobre.html">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-empresa">Empresa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-negocio">Negócios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="principais.html?id=header-pessoa">Pessoas</a>
+            </li>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sistemas</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="sistemas.html">Demanda</a>
+                <a class="dropdown-item" href="sistemas.html">RTI</a>
+                <a class="dropdown-item" href="sistemas.html">Reserva Sala</a>
+                <a class="dropdown-item" href="internas/manutencao.html" >Manutenção Intranet</a>
+                <a class="dropdown-item" href="sistemas.html">Ver Todos</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="index.html">Intranet BB</a>
+                <a class="dropdown-item" href="index3.html">Plataforma</a>
+                <a class="dropdown-item" href="index2.html">Ouvidoria</a>
+                <a class="dropdown-item" href="index.html">Unibb</a>
+                <a class="dropdown-item" href="index3.html">Conections</a>
+                <a class="dropdown-item" href="index2.html">Cipa</a>
+                <a class="dropdown-item" href="index.html">Ecoa</a>
+                <a class="dropdown-item" href="index3.html">Downloads Úteis</a>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="funcionarios.html"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="funcionarios.html"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Perfil</a>
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-envelope-o" aria-hidden="true"></i> Correio</a>
+                <a class="dropdown-item" href="faq.html"><i class="fa fa-check" aria-hidden="true"></i> Ciência de Termos</a>
+                <a class="dropdown-item" href="full-width.html"><i class="fa fa-stethoscope" aria-hidden="true"></i> Periódico</a>
+                <a class="dropdown-item" href="sidebar.html"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Shiatsu</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Sistemas
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Sistemas</li>
+      </ol>
+
+	  
+		
+      <div class="row">
+	  
+	  <% Dim rsAsp, rsJava, vet(2)
+		
+		vet(0) = "intranet"
+		vet(1) = "Select * from tb_int_criticidademenu where ativo = 1 and itemmenu like 'aplicativo%' order by titulo"
+		
+		abreconexao(vet)
+		rsAsp = cnxs
+		fechaconexao
+		
+		if not rsAsp.eof then
+			while not rsAsp.eof do
+		%>
+		
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="<%=rsAsp.fields("endereco")%>"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="<%=rsAsp.fields("endereco")%>"><%=rsAsp.fields("titulo")%></a>
+              </h4>
+              <p class="card-text"><%=rsAsp.fields("titulo")%></p>
+            </div>
+          </div>
+        </div>
+		<%	rsAsp.movenext
+			loop
+		end if %>
+		<%
+		vet(0) = "CONTROL"
+		vet(1) = "Select *, 'servidor+exe' as endereco from sistema where ativo = 'S' and web='S' order by exe"
+		
+		abreconexao(vet)
+		rsJava = cnxs
+		fechaconexao
+		
+		if not rsJava.eof then
+			while not rsJava.eof do
+		%>
+		
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="<%=rsJava.fields("endereco")%>"><img class="card-img-top" src="http://placehol0" alt="<%=rsJava.fields("exe")%>"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="<%=rsAsp.fields("endereco")%>"><%=rsJava.fields("nome")%></a>
+              </h4>
+              <p class="card-text"><%=rsJava.fields("descricao")%></p>
+            </div>
+          </div>
+        </div>
+		<%	rsJava.movenext
+			loop
+		end if %>
+		
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">SA - Sit amet</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">NV - Nam viverra</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">EO - euismod odio</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">PL - Ppellentesque</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">EN - earum nostrum</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">VV - varius vitae</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">DD - dicta dignissimos</a>
+              </h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci dicta dignissimos neque animi ea, veritatis, provident hic consequatur ut esse! Commodi ea consequatur accusantium, beatae qui deserunt tenetur ipsa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-1 bg-light">
+      <div class="container">
+        <p class="m-0 text-center text-black">Copyright &copy; Divisão de Tecnologia 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

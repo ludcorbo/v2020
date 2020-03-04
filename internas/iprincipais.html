@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.dtvm.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/modern-business-dtvm.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+	
+	<%Dim id, rs, subid
+		id = Request.QueryString("id")
+		subid = Request.QueryString("subid") 
+		
+	if subid="" then	
+		%>
+    <h2># <%=id%> Selecionado</h2>
+    <p>Selecionar tópicos no menu lateral</p>
+	<% else %>
+	
+	<%end if%>
+
+    
+  </body>
+
+</html>
